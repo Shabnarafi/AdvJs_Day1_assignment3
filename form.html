@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<form name="form1" action="#">
+<input type="text" id="name" placeholder="Enter your name" required/><span id="sp1"></span><br>
+<input type="text" id="email" placeholder="Enter your Email Address" required/><span id="sp2"></span><br>
+<input type="text" id="tel" placeholder="Enter your telephone number" required/><span id="sp3"></span><br>
+<textarea rows="10" cols="50" id="addrss"></textarea><br>
+<input type="button" id="btn" value="Submit" onclick="myFunction(form1.name.value,form1.email.value,form1.tel.value,form1.addrss.value)"/>
+<p id="p1"></p>
+</form>
+<script>
+var myFunction = function(name,email,tel,addrss){
+
+	pat1=/^[a-zA-Z0-9\W\s]+$/;
+	pat2=/^([a-zA-Z0-9\W\s])+\@(([a-zA-Z0-9\-])+\.)([a-zA-Z0-9]{2,4})+$/;
+	pat3=/[0-9]{10}/;
+	if(name=="")
+	{
+		document.getElementById("sp1").innerHTML = "Name Shouldnt be empty";
+		return false;
+	
+	}
+	else if(email == "")
+	{
+		document.getElementById("sp1").innerHTML = "";
+		document.getElementById("sp2").innerHTML = "Email Shouldnt be empty";
+
+	}
+	else if(!(pat2.test(email)))
+	{
+		document.getElementById("sp1").innerHTML = "";
+		
+		document.getElementById("sp2").innerHTML = "";
+		document.getElementById("sp2").innerHTML = "Invalid Email Address";
+		document.getElementById("email").focus();
+		return false;
+	
+	}
+	else if(tel == "")
+	{
+		document.getElementById("sp1").innerHTML = "";
+		
+		document.getElementById("sp2").innerHTML = "";
+		document.getElementById("sp3").innerHTML = "Telephone number shouldnt be empty";
+
+	}
+	else if(!(pat3.test(tel)))
+	{
+		document.getElementById("sp3").innerHTML = "";
+		document.getElementById("sp3").innerHTML = "Invalid Phone Number. Telephone number should be numeric and contain 10 digits";
+		document.getElementById("tel").focus();
+		return false;
+	
+	}
+	else
+	{
+	document.getElementById("sp1").innerHTML = "";
+	document.getElementById("sp2").innerHTML = "";
+	document.getElementById("sp3").innerHTML = "";
+	document.getElementById("p1").innerHTML = "Form Submitted";
+	return true;
+	}
+
+
+}
+</script>
+</body>
+</html>
